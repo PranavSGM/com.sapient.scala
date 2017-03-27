@@ -1,2 +1,2 @@
-# com.sapient.scala
-scala package in intelliJ
+# Scala_Jason_Swartz
+Solved Problems using Learning scala by Jason swartz

@@ -1,0 +1,20 @@
+Please start with these exercises in Scala :
+
+Create a Scala – Maven project with following Apps :
+1)      Remove consecutive duplicates from a list
+        Input List Like : List(1,1,2,2,2,3,3,1,1,4,5,5,6,7,5,5,5,8,7,7)
+        Output Like should be : List(1,2,3,1,4,5,6,7,5,8,7)
+2)      Write a High Order function that can take two integers and an functional literal of type  (int,int) => double
+        and returns the result after applying the function on integers.
+3)      Write a pure function that takes Any and returns its datatype.
+4)      Write a High order function that takes an List[Any] and func literal (int) => Boolean and
+        returns List with elements that satisfy functional lit.
+5)      Write a pure function to sub list from a given list  getSubList(List(1,2,3,4,5,6,7) , 3,5) = List(4,5,6)
+6)      Enhance List for :
+a.       List(1,2,3,4,5,6,4,5,6,4).secondGreatest  = 5
+b.      List(1,2,3,4,5,6,4,5,6,4).secondSmallest  = 2
+c.       List(1,2,3,4).average = 2.5
+d.      List(1,2,3,4,5,6,4,5,6,4).sumOfOdds =  14
+e.      List(1,2,3,4,5,6,4,5,6,4) minus List(1,2,3,4) = List(5,6)
+f.        List(1,2,3,4,5,6,4,5,6,4) plus List(1,2,3,7) = List(1,2,3,4,5,6,7)
+7)      Pure function for =>  List(3,4,5,6) = List(List(1,2,3) , List(1,2,3,4 ),  List(1,2,3,4,5), List(1,2,3,4,5,6))
