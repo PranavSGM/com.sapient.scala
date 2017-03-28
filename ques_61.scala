@@ -15,12 +15,14 @@ object ques_61
   {
     def secondGreatest=
     {
+      println(); println(" ******** Second Greatest ******** ")
+      if(l.nonEmpty) println("Sorted Input List =>"+ l.sorted)
       val order = l.sorted
       val d_order = order.distinct
       d_order match
         {
         case x if (x.size>=2) => d_order(d_order.size-2)
-        case x if (x.size==1)  => x.head
+        case x if (x.size==1)  => "List has only one Element !"
         case nil => "Empty List"
         }
     }
@@ -30,12 +32,14 @@ object ques_61
   {
     def secondSmallest =
     {
+      println(); println(" ******** Second Smallest ******* ")
+      if(l.nonEmpty) println("Sorted Input List =>"+ l.sorted)
       val order = l.sorted
       val d_order = order.distinct
       d_order match
       {
-        case x if (x.size>=2) => d_order(1)
-        case x if (x.size==1)  => x.head
+        case x if x.size>=2 => d_order(1)
+        case x if x.size==1 =>  "List has only one Element !"
         case nil => "Empty List"
       }
     }
@@ -43,9 +47,11 @@ object ques_61
 
   class average(val l:List[Int])
   {
-    def average =
+    def average:Any =
     {
-    val avg:Double = 1.0*l.sum / l.size
+      println(); println(" ******** Average ******* ")
+      if(l.nonEmpty) println("Sorted Input List =>"+ l.sorted)
+      val avg:Double = 1.0*l.sum / l.size
       l match
         {
         case x if(x.nonEmpty) => avg
@@ -56,46 +62,55 @@ object ques_61
 
   class sumofodd(val l:List[Int])
   {
-    def sumOfOdds=
+    def sumOfOdds =
     {
-      def rec(l:List[Int],sum:Int=0,c:Int=0,le:Int=0):Any=
+      def rec(l:List[Int],sum:Int=0,c:Int=0,onlyeven:Int=0):Any=
          l match
        {
-        case head::tail if(head%2 !=0) => rec(tail,sum+head,c+1,0)
-        case head::tail if(head%2==0) =>rec(tail,sum,0,1)
-        case _ if (c==0 && le==0) => "we do not have odd elements in this List ! "
-        case nil => sum
+           //Odd
+           case head::tail if(head%2 !=0) => rec(tail,sum+head,c+1,0)
+            //Even
+           case head::tail if(head%2==0) => rec(tail,sum,c,1)
+            //if List has no odd element: For Only Even -
+           case nil if(c==0 && onlyeven==1) => " Only Even elements in this List ! "
+           //Empty List
+           case nil => sum
        }
-      if (l.nonEmpty) rec(l) else "Empty List"
+      println(); println(" ******** Sum_Of_Odds ******* ")
+      if (l.nonEmpty){ println("Sorted Input List =>" + l.sorted) ;rec(l)}
+      else "Empty List"
     }
   };implicit def sumofodd123(List:List[Int])=new sumofodd(List)
+
+  class plusclass(l:List[Int],p:List[Int])
+  {
+    def plus=
+    {
+      val listcomb = List(l,p).flatten
+      println(); println(" ******* PLUS ******* ")
+      if(l.nonEmpty && p.nonEmpty)
+      {
+        println("Sorted Input List => " + l.sorted); println("Sorted Plus List => " + p.sorted)
+        listcomb.sorted.distinct
+      }
+  };implicit def plusList(L:List[Int],p:List[Int])= new plusclass(l,p)
 
 
 
   def main(args: Array[String]): Unit =
   {
-    val inputa= List(0,2,-2)//(1,1,2,3,4,5,6,4,5,6,4)
+    val inputa= List(2,4)//(1,1,2,3,4,5,6,4,5,6,4)
     println("Input => "+ inputa)
-    println("Sorted Input List =>"+inputa.sorted)
 
-    val outa = inputa.secondGreatest
-    println(s"Second largest element of List => $outa")
+    println(s" Second largest element of List => "+ inputa.secondGreatest)
 
-    val outb = inputa.secondSmallest
-    println(s"Second smallest element of List => $outb")
+    println(s" Second smallest element of List => " + inputa.secondSmallest )
 
-    val outc = inputa.average
-    println(s"Average of elements of List =>$outc")
+    println(s" Average of elements of List => "+ inputa.average)
 
-    val outd = inputa.sumOfOdds
-    println(s"sum of odd no.s in list =>$outd")
+    println(s" sum of odd no.s in list => "+ inputa.sumOfOdds)
 
-
-
-
-
-
-
+    println(s" List 1 Plus List 2 => "+ plus(inputa,List(1,1,4,7,9,8)) )
 
   }
 }
